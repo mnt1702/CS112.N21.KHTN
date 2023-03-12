@@ -5,7 +5,7 @@ import time
 
 
 def merge(L,R):
-    i = j = 0
+    i = j = k = 0
     res = []
 
     while i < len(L) and j < len(R):
@@ -13,7 +13,7 @@ def merge(L,R):
             res.append(L[i])
             i += 1
         else:
-            res.append(R[j])
+            res.append(R[i])
             j += 1
 
     res.extend(L[i:])
@@ -24,22 +24,21 @@ def merge(L,R):
 
 
 def mergeSort(arr):
+
     if len(arr) <= 1:
         return arr
-    
     mid = len(arr) // 2
     L, R = mergeSort(arr[:mid]), mergeSort(arr[mid:])
-    return merge(L, R)
+    return merge(L,R)
 
 
 
 def parallelMergeSort(arr,cpu_count=multiprocessing.cpu_count()):
         mid = len(arr) // 2
         full = [arr[mid:], arr[:mid]]
-
         if cpu_count == 1:
-            l, r = mergeSort(arr[mid:]), mergeSort(arr[:mid])
-            return merge(l,r)
+            return mergeSort(arr)
+
         else:
             result = []
             with futures.ProcessPoolExecutor(cpu_count) as p:
@@ -55,22 +54,24 @@ def parallelMergeSort(arr,cpu_count=multiprocessing.cpu_count()):
 
 
 def main():
+    #print(time.time())
     randomlist1 = []
-    for i in range(0, 10):
+    for i in range(0, 1000000):
         randomlist1.append(random.randint(1, 2000000))
+
     randomlist2 = randomlist1
 
     startTime = time.time()
     sorted = mergeSort(randomlist1)
-    print(sorted)
+    #print(sorted)
     print("Merge Sort: %s seconds" % (time.time() - startTime))
 
-    print("------------------------------------------------")
-
+    print("----------------------------------------------")
     startTime = time.time()
+
     sorted = parallelMergeSort(randomlist2)
     #print(sorted)
-    print("Parallel Merge Sort: %s seconds" % (time.time() - startTime))
+    print("Parallel Merge sort %s seconds" % (time.time() - startTime))
 
 
 
