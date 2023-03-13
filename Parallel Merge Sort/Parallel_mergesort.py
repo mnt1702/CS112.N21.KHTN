@@ -13,7 +13,7 @@ def merge(L,R):
             res.append(L[i])
             i += 1
         else:
-            res.append(R[i])
+            res.append(R[j])
             j += 1
 
     res.extend(L[i:])
@@ -49,8 +49,7 @@ def parallelMergeSort(arr,cpu_count=multiprocessing.cpu_count()):
                     future = p.map(parallelMergeSort,full,cpu_countlist)
                     for value in future:
                         result.append(value)
-
-            return merge(result[0],result[1])
+            return merge(result[0], result[1])
 
 
 def main():
