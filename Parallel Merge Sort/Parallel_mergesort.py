@@ -5,7 +5,7 @@ import time
 
 
 def merge(L,R):
-    i = j = k = 0
+    i = j = 0
     res = []
 
     while i < len(L) and j < len(R):
@@ -72,6 +72,8 @@ def main():
     sorted = parallelMergeSort(randomlist2)
     #print(sorted)
     print("Parallel Merge sort %s seconds" % (time.time() - startTime))
+    cpu_count=multiprocessing.cpu_count()
+    print("cpu_count: %d" % cpu_count)
 
 
 
