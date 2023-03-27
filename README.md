@@ -6,7 +6,7 @@
 
 <h1 align="center"><b>CS112.N21.KHTN - Phân tích và thiết kế thuật toán</b></h>
 
-## Nhóm 8:
+## Nhóm 3:
 |**STT**|**MSSV**|  **Họ và tên**  |**Chức vụ**|       **Email**      |
 |-------|--------|-----------------|-----------|----------------------|
 |   1   |21520523|  Mai Nhất Tùng  |Nhóm trưởng|21520523@gm.uit.edu.vn|
