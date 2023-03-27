@@ -9,9 +9,9 @@
 ## Nhóm 8:
 |**STT**|**MSSV**|  **Họ và tên**  |**Chức vụ**|       **Email**      |
 |-------|--------|-----------------|-----------|----------------------|
-|   1   |21520523|  Mai Nhất Tùng  |Nhóm trưởng|21520033@gm.uit.edu.vn|
-|   2   |21520436|  Hà Trọng Tài   |Thành viên |21522883@gm.uit.edu.vn|
-|   3   |21521248|Nguyễn Ngọc Nhung|Thành viên |21522883@gm.uit.edu.vn|
+|   1   |21520523|  Mai Nhất Tùng  |Nhóm trưởng|21520523@gm.uit.edu.vn|
+|   2   |21520436|  Hà Trọng Tài   |Thành viên |21520436@gm.uit.edu.vn|
+|   3   |21521248|Nguyễn Ngọc Nhung|Thành viên |21521248@gm.uit.edu.vn|
 
 
 ## Giới thiệu môn học:
