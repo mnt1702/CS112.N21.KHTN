@@ -1,0 +1,54 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <queue>
+
+using namespace std;
+int k = 0;
+vector<int> check;
+vector<vector<int> > city(100000);
+
+void BFS(int s){
+    queue<int> d;
+    check[s] = 1;
+    d.push(s);
+    int t = 1;
+    while(!d.empty()){
+        for (int i = 0; i < city[d.front()].size(); i++){
+            int tmp = city[d.front()][i];
+            if (check[tmp] == 0){
+                d.push(tmp);
+                check[tmp] = 1;
+                t++;
+            }
+        }
+        d.pop();
+    }
+    k += (t * (t - 1)) / 2;
+}
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    for (int i = 0; i < m; i++){
+        int a, b;
+        cin>>a>>b;
+        city[a].push_back(b);
+        city[b].push_back(a);
+    }
+
+    for (int i = 0; i <= n; i++){
+        check.push_back(0);
+    }
+
+    for (int i = 1; i <= n; i++){
+        if(check[i] == 0){
+            BFS(i);
+        }
+    }
+
+    cout << n * (n - 1) / 2 - k;
+
+    return 0;
+}
