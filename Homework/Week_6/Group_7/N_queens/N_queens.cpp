@@ -1,50 +1,50 @@
 #include<iostream>
 using namespace std;
 
-void printBoard(int board[100][100], int n) {
+int solution = 0;
+int board[100][100];
+
+void printBoard(int n) {
+    cout << "[";
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++)
-            if(board[i][j] == 0) cout << ". "; 
-            else cout << "Q ";
-        cout << endl;
-   }
+            if(board[i][j] == 1) cout << "(" << i + 1 << ", " << j + 1 << ")";
+        if(i != n - 1) cout << " ";
+    }
+    cout << "]\n";
 }
-bool isValid(int board[100][100], int n, int row, int col) {
-    for (int i = 0; i < col; i++)
-        if (board[row][i])
+bool isValid(int n, int row, int col) {
+    for (int i = 0; i < row; i++)
+        if (board[i][col])
             return false;
     for (int i=row, j=col; i>=0 && j>=0; i--, j--)
         if (board[i][j])
             return false;
-    for (int i=row, j=col; j>=0 && i < n; i++, j--)
+    for (int i=row, j=col; j < n && i >= 0; i--, j++)
         if (board[i][j])
             return false;
     return true;
 }
-bool solveNQueen(int board[100][100], int n, int col) {
-    if (col >= n)
-        return true;
+void solveNQueen(int n, int row) {
+    if (row == n) {
+        printBoard(n);
+        solution = 1;
+        return;
+    }
     for (int i = 0; i < n; i++) {
-        if (isValid(board, n, i, col) ) {
-            board[i][col] = 1;
-            if ( solveNQueen(board, n, col + 1))
-                return true;
-            board[i][col] = 0;
+        if (isValid(n, row, i)) {
+            board[row][i] = 1;
+            solveNQueen(n, row + 1);
+            board[row][i] = 0;
         }
     }
-    return false;
 }
-bool checkSolution(int n) {
-    int board[100][100];
+void checkSolution(int n) {
     for(int i = 0; i<n; i++)
-    for(int j = 0; j<n; j++)
-    board[i][j] = 0;
-    if ( solveNQueen(board, n, 0) == false ) {
-            cout << "Solution does not exist";
-        return false;
-    }
-    printBoard(board, n);
-    return true;
+        for(int j = 0; j<n; j++)
+            board[i][j] = 0;
+    solveNQueen(n, 0);
+    if( !solution ) cout << "No solution found.";
 }
 int main() {
     int n;
